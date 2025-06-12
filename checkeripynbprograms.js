@@ -1,55 +1,65 @@
-//  Chapter 4 Excercise 1
+//  Chapter 4 Excercise 3: 2nd attempt       (gone right)
 
-// part 1
 
-function range(start, end) {
-    let result = [];
-    for (let i = start; i <= end; i++) {
-        result.push(i);
+function arrayToList(inputArray) {
+    let front = null;
+    function prepend(element, list) {
+        let newFront = {
+            value: element,
+            rest: list
+        };
+        list = newFront;
+        return list;
     }
-    return result;
+
+    for (let i = 0; i < inputArray.length; i++) {
+        front = prepend(inputArray[inputArray.length - 1 - i], front);
+    }
+    return front;
 }
 
-console.log(range(17,30));
+
+let chainOf5 = arrayToList([1,2,3,4,5]);
+console.log(chainOf5);
+
+let arrayOf3 = [1,2,3];
+console.log(arrayToList(arrayOf3));
+
+console.log(arrayToList([]));
+
+console.log(arrayToList(["hi"]));
+
+console.log(arrayToList(["hi", "there", "dude", "hello"]));
 
 
-// part 2
-
-function sum(arrayOfNum) {
-    let summation = 0;
-    for (let input of arrayOfNum) {
-        summation += input;
+function listToArray(inputList) {
+    let outputArray = [];
+    function nth(list, index) {
+        if (index == 0) {
+            return list?.value;
+        }
+        return nth(list.rest, index - 1);
     }
-    return summation;
+
+    for (let i = 0; nth(inputList, i) != undefined; i ++) {
+        outputArray.push(nth(inputList, i));
+    }
+    return outputArray;
 }
 
-console.log(sum(range(1,10)));
+console.log(listToArray(chainOf5));
 
-
-// part 3
-
-function range2(start, end, step = 1) {
-    let result = [];
-    if (step > 0) {
-        for (let i = start; i <= end; i+= step) {
-            result.push(i);
+let listOfNumbers = {value:7, rest: {         // equivalent to array [7,5,2,3,2]
+    value:5, rest: {
+        value:2, rest: {
+            value: 3, rest: {
+                value: 2, rest: null
+            }
         }
     }
-    else if (step < 0) {
-        for (let i = start; i >= end; i+= step) {
-            result.push(i);
-        }
-    }
-    return result;
-}
+}}
+console.log(listToArray(listOfNumbers));
 
+console.log(listToArray(null));
 
-console.log(range2(10, 20, 2));
-
-console.log(range2(33, 41));
-
-console.log(range2(5, -15, -2));
-
-console.log(range2(5, 10, 0));
-
-console.log(range2(5, 2, -1));
+console.log(listToArray({value: "heeelllo", rest:{value: "bobby", rest: null}}));
