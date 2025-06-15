@@ -1,65 +1,40 @@
-//  Chapter 4 Excercise 3: 2nd attempt       (gone right)
+//   Chapter 5 Excercise 3
 
-
-function arrayToList(inputArray) {
-    let front = null;
-    function prepend(element, list) {
-        let newFront = {
-            value: element,
-            rest: list
-        };
-        list = newFront;
-        return list;
-    }
-
-    for (let i = 0; i < inputArray.length; i++) {
-        front = prepend(inputArray[inputArray.length - 1 - i], front);
-    }
-    return front;
-}
-
-
-let chainOf5 = arrayToList([1,2,3,4,5]);
-console.log(chainOf5);
-
-let arrayOf3 = [1,2,3];
-console.log(arrayToList(arrayOf3));
-
-console.log(arrayToList([]));
-
-console.log(arrayToList(["hi"]));
-
-console.log(arrayToList(["hi", "there", "dude", "hello"]));
-
-
-function listToArray(inputList) {
-    let outputArray = [];
-    function nth(list, index) {
-        if (index == 0) {
-            return list?.value;
-        }
-        return nth(list.rest, index - 1);
-    }
-
-    for (let i = 0; nth(inputList, i) != undefined; i ++) {
-        outputArray.push(nth(inputList, i));
-    }
-    return outputArray;
-}
-
-console.log(listToArray(chainOf5));
-
-let listOfNumbers = {value:7, rest: {         // equivalent to array [7,5,2,3,2]
-    value:5, rest: {
-        value:2, rest: {
-            value: 3, rest: {
-                value: 2, rest: null
-            }
+function every(inputArray, predicateFunction) {
+    for (let input of inputArray) {
+        if (!predicateFunction(input)) {
+            return false;
         }
     }
-}}
-console.log(listToArray(listOfNumbers));
+    return true;
+}
 
-console.log(listToArray(null));
+function every2(inputArray, predicateFunction) {     
+    /*if (!inputArray.some(!predicateFunction())) {   // this would've worked if notated correctly, and the reason it would work is basically set theory: the "every" function is basically the "and" function for arrays
+                                                      // and the "some" function is basically the "or" function for arrays. From set theory, we learned that
+                                                      // !(A and B) = (!A or !B), and this is equivalent to (A and B) = !(!A or !B). We use the latter (second) equation in our program.
+                                                      // The expression !inputArray.some(!predicateFunction()) basically means !(!A or !B or ... or !N) which equals (A and B and ... and N)
+                                                      // and that should equal true if and only if the "every" function returns true, and equal false if and only if the "every" function returns false.
+                                                      // So we use if statement to make sure the function only returns true if (A and B and ... and N) equals true, and false for otherwise.
+        return true;                                    
+    }*/
 
-console.log(listToArray({value: "heeelllo", rest:{value: "bobby", rest: null}}));
+    if (!inputArray.some(i => !predicateFunction(i))) {   // same idea as the code that was commented out (follows same ideas in above comments too), but notated correctly this time
+                                                          // the reason why above code creates error is beacuse !predicateFunction() is not a function value, it's actually a boolean value, you can't just put an ! mark in front of a function to make another function/(function value). Maybe you can in other cases (I tested in code block below this one)
+        return true;
+    }
+    return false;
+}
+
+console.log(every([1,2,3], i => i < 5));
+console.log(every2([1,2,3], i => i < 5));
+
+console.log(every([1,2,3], i => i < 3));
+console.log(every2([1,2,3], i => i < 3));
+
+console.log(every(["hi", true, "yes", 17, x => {x < 22}], i => typeof(i) != "object"));
+console.log(every2(["hi", true, "yes", 17, x => {x < 22}], i => typeof(i) != "object"));
+
+console.log(every(["hi", true, "yes", 17, x => {x < 22}], i => typeof(i) != "function"));
+console.log(every2(["hi", true, "yes", 17, x => {x < 22}], i => typeof(i) != "function"));
+
