@@ -1,0 +1,4 @@
+camera_logs_1.txt
+camera_logs_2.txt
+camera_logs_3.txt
+camera_logs_4.txt
