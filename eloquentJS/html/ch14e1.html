@@ -1,0 +1,70 @@
+
+<table>
+ <tr>
+  <th>name</th>
+  <th>height</th>
+  <th>place</th>
+ </tr>
+ <tr>
+  <td>Kilimanjaro</td>
+  <td>5895</td>
+  <td>Tanzania</td>
+ </tr>
+</table>
+
+<p id = "mountains">
+    
+</p>
+<button onclick= "insertIntoTable(remainingDataSet); document.getElementsByTagName('button')[0].remove()"> View More Rows </button>
+ <script>
+
+    let table = document.createElement("table");
+    let headerRow = document.createElement("tr");
+    table.appendChild(headerRow);
+    let columnNames = ["name" , "height" , "place"];
+    for (let i = 0; i < columnNames.length; i++) {
+        let cell = document.createElement("th");
+        headerRow.appendChild(cell);
+        cell.appendChild(document.createTextNode(columnNames[i]));
+    }
+    console.log(table);
+
+    // let html = document.getElementsByTagName("html")[0];
+    // let body = html.childNodes[1];
+    // body.appendChild(table)
+    // console.log(body.childNodes);
+
+    let tableSpot = document.getElementById("mountains");
+    tableSpot.appendChild(table);
+
+    let dataSet = 
+    [
+        {name: "Everest" , height: 20000, place: "Asia"},
+        {name: "Appilachain", height: 3000, place: "US"},
+        {name: "Fuji", height: 1000, place: "Japan"},
+        {name: "Machu Pichu" , height: 2000, place: "South America"},
+        {name: "Canadian", height: 1500, place: "Canada"},
+        {name: "K2", height: 15000, place: "Pakistan"}
+    ];
+
+    function insertIntoTable(dataset, numOfRows = dataset.length) {
+        let count = 0;
+        for (let entry of dataset) {
+            let row = document.createElement("tr")
+            table.appendChild(row);
+            for (let category of columnNames) {
+                let cell = document.createElement("td");
+                cell.appendChild(document.createTextNode(entry[category]));
+                if (category == "height") {
+                    cell.setAttribute("style", "text-align: right");
+                }
+                row.appendChild(cell);
+            }
+            count++;
+            if (count >= numOfRows) {return};
+        }
+    }
+    insertIntoTable(dataSet, 3);
+
+    let remainingDataSet = dataSet.slice(3);
+ </script>

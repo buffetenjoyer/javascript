@@ -1,0 +1,42 @@
+<table>
+ <tr>
+  <th>name</th>
+  <th>height</th>
+  <th>place</th>
+ </tr>
+ <tr>
+  <td>Kilimanjaro</td>
+  <td>5895</td>
+  <td>Tanzania</td>
+ </tr>
+</table>
+
+<script>
+    function getElementsByTagName2(Node, tagName) {
+        console.log(tagName);
+        let checkingArray = [];
+        let resultArray = [];
+        checkingArray.push(Node);
+        console.log(Node);
+        
+        while (checkingArray.length != 0) {
+            let dequeued = checkingArray[0];
+            console.log(dequeued);
+            checkingArray = checkingArray.slice(1);
+            for (child of dequeued.childNodes) {
+                checkingArray.push(child);
+            }
+            console.log(dequeued.nodeName);
+            console.log(tagName.toUpperCase());
+            if (dequeued.nodeName == tagName.toUpperCase()) {
+                console.log("here");
+                resultArray.push(dequeued);
+            }
+
+        }
+        return resultArray;
+    }
+    let table = document.getElementsByTagName(("table"))[0];
+    console.log(table.getElementsByTagName("tr"));
+    console.log(getElementsByTagName2(table, "tr"));
+</script>

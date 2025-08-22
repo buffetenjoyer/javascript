@@ -1,0 +1,18 @@
+
+
+ <body>
+
+    <script src = "artEditorCode.js"></script>
+
+    <script>
+        document.body.appendChild(elt("button", {
+        onclick: () => console.log("click")
+        }, "The button"));
+    </script>
+
+    <div></div>
+    <script>
+        document.querySelector("div").appendChild(startPixelEditor({}));
+    </script>
+    
+ </body>
