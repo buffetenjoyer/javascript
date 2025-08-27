@@ -11,7 +11,7 @@
         this.talks = talks;
         this.version = 0;
         this.waiting = [];
-        let fileServer = serveStatic("./public");
+        let fileServer = serveStatic("./");
         this.server = createServer((request, response) => {
             serveFromRouter(this, request, response, () => {
                 fileServer(request, response,

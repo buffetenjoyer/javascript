@@ -12,7 +12,7 @@ let cwd = process.cwd();
 
 async function search(area) {
     let path = resolve(area);
-    console.log(path);
+    // console.log(path);
     let stats = await stat(path);
     if (stats.isDirectory()) {
         let parts = await readdir(path);
