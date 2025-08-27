@@ -1,0 +1,11 @@
+{
+    "name": "Hello World Extensions",
+    "description": "first ever extension",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "hello.html",
+        "default_icon": "hat.png"
+    } 
+
+}
