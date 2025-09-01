@@ -31,9 +31,11 @@
 
         currentVideoBookmarks = await fetchBookmarks();
 
-        chrome.storage.sync.set({
+        await chrome.storage.sync.set({
             [currentVideo]: JSON.stringify([...currentVideoBookmarks, newBookmark].sort((a, b) => a.time - b.time))
         });
+
+        currentVideoBookmarks = await fetchBookmarks();
     };
 
     const getTime = t => {
@@ -59,6 +61,7 @@
             youtubePlayer.currentTime = value
         } else if (type == "DELETE") {
             console.log(currentVideoBookmarks);
+            console.log(value);
             currentVideoBookmarks = currentVideoBookmarks.filter((b) => b.time != value);
             console.log("newBookies:");
             console.log(currentVideoBookmarks);

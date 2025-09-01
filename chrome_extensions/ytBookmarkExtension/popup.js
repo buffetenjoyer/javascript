@@ -17,6 +17,7 @@ const onDelete = async e => {
 
     bookmarkElementToDelete.parentNode.removeChild(bookmarkElementToDelete);
 
+    console.log(bookmarkTime);
     chrome.tabs.sendMessage(activeTab.id, {
         type: "DELETE",
         value: bookmarkTime
@@ -42,6 +43,7 @@ const addNewBookmark = (bookmarksElement, bookmark) => {
 
     controlsElement.className = "bookmark-controls";
 
+    console.log(bookmark.time);
     newBookmarkElement.id = "bookmark-" + bookmark.time;
     newBookmarkElement.className = "bookmark";
     newBookmarkElement.setAttribute("timestamp", bookmark.time);
