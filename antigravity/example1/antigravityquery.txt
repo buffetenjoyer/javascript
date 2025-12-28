@@ -1,0 +1,1 @@
+Using javascript, can you create a simple webpage that says "merry christmas" with a png of a bell underneath "merry christmas" and whenever the user clicks on the bell, it plays an audio saying "ho ho ho"

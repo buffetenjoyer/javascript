@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle, #0f4d32 0%, #062f1f 100%);
+    color: #fff;
+    font-family: 'Mountains of Christmas', cursive;
+    overflow: hidden;
+}
+
+.container {
+    text-align: center;
+}
+
+.christmas-text {
+    font-size: 5rem;
+    color: #e63946;
+    text-shadow: 2px 2px 0px #fff, 0 0 20px rgba(230, 57, 70, 0.8);
+    margin-bottom: 2rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.bell-container {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.bell-container:hover #christmas-bell {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.bell-container:active #christmas-bell {
+    transform: scale(0.95);
+}
+
+#christmas-bell {
+    width: 200px; /* Adjust based on generated image size */
+    height: auto;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+}
+
+.instruction {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: #f1faee;
+    opacity: 0.8;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 2px 2px 0px #fff, 0 0 10px rgba(230, 57, 70, 0.5);
+    }
+    to {
+        text-shadow: 2px 2px 0px #fff, 0 0 30px rgba(230, 57, 70, 1);
+    }
+}
