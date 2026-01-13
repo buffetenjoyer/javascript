@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Dodger</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas" width="800" height="600"></canvas>
+        <div id="ui-layer">
+            <div id="score">Score: 0</div>
+            <div id="start-screen" class="active">
+                <h1>Neon Dodger</h1>
+                <p>Press Space/Click to Start</p>
+                <p>Arrow Keys to Move</p>
+            </div>
+            <div id="game-over-screen" class="hidden">
+                <h1>Game Over</h1>
+                <p id="final-score">Score: 0</p>
+                <button id="restart-btn">Try Again</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+:root {
+    --bg-color: #0d0d15;
+    --primary-color: #00ff88;
+    --accent-color: #ff0055;
+    --text-color: #ffffff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font-family);
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    border: 2px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+canvas {
+    display: block;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #0d0d15 100%);
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Let clicks pass through to canvas if needed, mostly for non-interactive UI */
+}
+
+#score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.active {
+    display: flex !important;
+}
+
+#start-screen, #game-over-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-color);
+    pointer-events: auto;
+    backdrop-filter: blur(5px);
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px var(--primary-color);
+    color: var(--primary-color);
+}
+
+#game-over-screen h1 {
+    color: var(--accent-color);
+    text-shadow: 0 0 20px var(--accent-color);
+}
+
+p {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    font-size: 20px;
+    color: #000;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: bold;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--primary-color);
+}

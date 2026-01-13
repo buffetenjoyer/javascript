@@ -1,0 +1,1 @@
+can you create a simple video game like rock paper scissors against the computer using html and jsx that runs on a web server
